@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-deploy
+  labels: 
+    app: proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy
+  template:
+    metadata:
+      labels: 
+        app: proxy
+    spec:
+      containers:
+        - name: proxy
+          image: proxy:dev
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5000
+          env:
+              - name: ASPNETCORE_ENVIRONMENT
+                value: Development
+              - name: ConnectionStrings__DefaultConnection
+                value: Server=proxy-postgres-postgresql;Port=5432;Database=postgres;User Id=postgres;Password=passw0rd;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-service
+  labels:
+    app: proxy-service
+spec:
+  type: NodePort
+  ports:
+    - name: proxy
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+      app: proxy

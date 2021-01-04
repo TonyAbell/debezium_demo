@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "consumer": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "KafkaSettings__GroupId": "14",
+        "KafkaSettings__BootstrapServers": "my-kafka.default.svc.cluster.local:9092",
+        "ConnectionStrings__DefaultConnection": "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=passw0rd;"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

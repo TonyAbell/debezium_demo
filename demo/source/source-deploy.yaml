@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-deploy
+  labels: 
+    app: source
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: source
+  template:
+    metadata:
+      labels: 
+        app: source
+    spec:
+      containers:
+        - name: source
+          image: source:dev
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5000
+          env:
+              - name: ASPNETCORE_ENVIRONMENT
+                value: Development
+              - name: ConnectionStrings__DefaultConnection
+                value: Server=postgres-postgresql;Port=5432;Database=postgres;User Id=postgres;Password=passw0rd;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: source-service
+  labels:
+    app: source-service
+spec:
+  type: NodePort
+  ports:
+    - name: source
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+      app: source

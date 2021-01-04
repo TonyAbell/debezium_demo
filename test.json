@@ -1,0 +1,265 @@
+{
+    "schema": {
+      "type": "struct",
+      "fields": [
+        {
+          "type": "struct",
+          "fields": [
+            {
+              "type": "string",
+              "optional": false,
+              "field": "containerid"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "type"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "status"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "brand"
+            },
+            {
+              "type": "struct",
+              "fields": [
+                {
+                  "type": "int32",
+                  "optional": false,
+                  "field": "scale"
+                },
+                {
+                  "type": "bytes",
+                  "optional": false,
+                  "field": "value"
+                }
+              ],
+              "optional": true,
+              "name": "io.debezium.data.VariableScaleDecimal",
+              "version": 1,
+              "doc": "Variable scaled decimal",
+              "field": "capacity"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "name": "io.debezium.time.MicroTimestamp",
+              "version": 1,
+              "field": "creationdate"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "name": "io.debezium.time.MicroTimestamp",
+              "version": 1,
+              "field": "updatedate"
+            }
+          ],
+          "optional": true,
+          "name": "postgres.public.containers.Value",
+          "field": "before"
+        },
+        {
+          "type": "struct",
+          "fields": [
+            {
+              "type": "string",
+              "optional": false,
+              "field": "containerid"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "type"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "status"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "field": "brand"
+            },
+            {
+              "type": "struct",
+              "fields": [
+                {
+                  "type": "int32",
+                  "optional": false,
+                  "field": "scale"
+                },
+                {
+                  "type": "bytes",
+                  "optional": false,
+                  "field": "value"
+                }
+              ],
+              "optional": true,
+              "name": "io.debezium.data.VariableScaleDecimal",
+              "version": 1,
+              "doc": "Variable scaled decimal",
+              "field": "capacity"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "name": "io.debezium.time.MicroTimestamp",
+              "version": 1,
+              "field": "creationdate"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "name": "io.debezium.time.MicroTimestamp",
+              "version": 1,
+              "field": "updatedate"
+            }
+          ],
+          "optional": true,
+          "name": "postgres.public.containers.Value",
+          "field": "after"
+        },
+        {
+          "type": "struct",
+          "fields": [
+            {
+              "type": "string",
+              "optional": false,
+              "field": "version"
+            },
+            {
+              "type": "string",
+              "optional": false,
+              "field": "connector"
+            },
+            {
+              "type": "string",
+              "optional": false,
+              "field": "name"
+            },
+            {
+              "type": "int64",
+              "optional": false,
+              "field": "ts_ms"
+            },
+            {
+              "type": "string",
+              "optional": true,
+              "name": "io.debezium.data.Enum",
+              "version": 1,
+              "parameters": {
+                "allowed": "true,last,false"
+              },
+              "default": "false",
+              "field": "snapshot"
+            },
+            {
+              "type": "string",
+              "optional": false,
+              "field": "db"
+            },
+            {
+              "type": "string",
+              "optional": false,
+              "field": "schema"
+            },
+            {
+              "type": "string",
+              "optional": false,
+              "field": "table"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "field": "txId"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "field": "lsn"
+            },
+            {
+              "type": "int64",
+              "optional": true,
+              "field": "xmin"
+            }
+          ],
+          "optional": false,
+          "name": "io.debezium.connector.postgresql.Source",
+          "field": "source"
+        },
+        {
+          "type": "string",
+          "optional": false,
+          "field": "op"
+        },
+        {
+          "type": "int64",
+          "optional": true,
+          "field": "ts_ms"
+        },
+        {
+          "type": "struct",
+          "fields": [
+            {
+              "type": "string",
+              "optional": false,
+              "field": "id"
+            },
+            {
+              "type": "int64",
+              "optional": false,
+              "field": "total_order"
+            },
+            {
+              "type": "int64",
+              "optional": false,
+              "field": "data_collection_order"
+            }
+          ],
+          "optional": true,
+          "field": "transaction"
+        }
+      ],
+      "optional": false,
+      "name": "postgres.public.containers.Envelope"
+    },
+    "payload": {
+      "before": null,
+      "after": {
+        "containerid": "C09",
+        "type": "Thermal",
+        "status": "Operational",
+        "brand": "containerbrand",
+        "capacity": {
+          "scale": 0,
+          "value": "FA=="
+        },
+        "creationdate": 1609349970080706,
+        "updatedate": 1609349970080706
+      },
+      "source": {
+        "version": "1.4.0.CR1",
+        "connector": "postgresql",
+        "name": "postgres",
+        "ts_ms": 1609351821736,
+        "snapshot": "last",
+        "db": "postgres",
+        "schema": "public",
+        "table": "containers",
+        "txId": 572,
+        "lsn": 23558960,
+        "xmin": null
+      },
+      "op": "r",
+      "ts_ms": 1609351821736,
+      "transaction": null
+    }
+  }
