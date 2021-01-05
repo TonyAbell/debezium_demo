@@ -31,4 +31,4 @@ spec:
               - name: KafkaSettings__BootstrapServers
                 value: my-kafka.default.svc.cluster.local:9092
               - name: KafkaSettings__GroupId
-                value: 14
+                value: "14"
